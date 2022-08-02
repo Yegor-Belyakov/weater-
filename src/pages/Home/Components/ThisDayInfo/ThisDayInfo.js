@@ -3,12 +3,12 @@ import s from './ThisDayInfo.module.scss'
 import cloud from '../../../../assets/cloud.png'
 import ThisDayItem from './ThisDayItem'
 
-const ThisDayInfo = () => {
+const ThisDayInfo = ({weather}) => {
   const items = [
     {
     icon_id: 'temp',
     name: 'Температура',
-    value: '20° ощущается как 17°'
+    value: `${Math.round(weather.main.temp)}° ощущается как ${Math.round(weather.main.temp - 3)}° `
   },
   {
     icon_id: 'pressure',

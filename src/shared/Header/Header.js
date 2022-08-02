@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Select, { components } from 'react-select'
+import React from "react";
+import Select from 'react-select'
 import GlobalSvgSelector from "../../assets/images/icons/GlobalSvgSelector";
 import { useTheme } from "../../hooks/useTheme";
 
@@ -12,7 +12,7 @@ const Header = () => {
     { value: "city-2", label: "Москва" },
     { value: "city-3", label: "Новгород" },
   ];
-  // const [theme, setTheme] = useState('light');
+ 
 
 
   const colourStyles = {
@@ -32,23 +32,14 @@ const Header = () => {
   }
   
   function  changeTheme  () {
-    // setTheme(theme === 'light' ? 'dark' : 'light');
+   
     theme.changeTheme(theme.theme === 'light' ? 'dark' : 'light')
 
     
 
   }
 
-  useEffect(() => {
-    const root = document.querySelector(':root') 
-    const components = ['body-background', 'components-background', 'card-background', 'card-shadow', 'text-color']
 
-    components.forEach((component) => {
-      root.style.setProperty(`--${component}-default`, `var(--${component}-${theme.theme})`);
-    })
-
-    
-  }, [theme.theme])
   
   return (
     <header className={s.header}>

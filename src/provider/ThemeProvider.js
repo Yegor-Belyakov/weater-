@@ -1,12 +1,16 @@
 import { useState } from "react"
 import { ThemeContext } from "../context/ThemeContext"
+import { changeCssRootVariables } from "../model/ChangeCssRootVariables"
+import { storage } from "../model/Storage"
 
 
 export const ThemeProvider = ({children, ...props}) => {
-  const  [theme, setTheme] = useState('light')
-
+  const  [theme, setTheme] = useState(storage.getItem('theme') || 'light')
+  changeCssRootVariables(theme)
 function changeTheme (theme) {
+  storage.setItem('theme', theme)
   setTheme(theme)
+  changeCssRootVariables(theme)
 }
 
 
